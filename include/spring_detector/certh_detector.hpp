@@ -11,6 +11,7 @@
 
 #include <cvx/orec/linemod/linemod.hpp>
 #include <cvx/util/misc/path.hpp>
+#include <cvx/util/misc/cv_helpers.hpp>
 
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/image_encodings.h>
@@ -43,9 +44,14 @@ private:
     std::vector<std::vector<cv::Point> > convex_hull_points;
     std::vector<float> rotY, rotZ;
 
+    uint box_offset;
+    float threshold;
+
 public:
     CerthDetector()
     : it_(nh_)
+    , box_offset(100)
+    , threshold(0.025)
     {
         ROS_INFO("Constructor");
 
@@ -64,9 +70,12 @@ public:
 
     bool sDetect(spring_detector::springDetect::Request &req, spring_detector::springDetect::Response &res);
 
+    std::vector<bool> findEgdes(cv::Mat &rgb, std::vector<cv::Rect> &roi);
+
 };
 
 #endif
+
 
 
 
