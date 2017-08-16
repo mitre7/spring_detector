@@ -21,10 +21,12 @@ bool CerthDetector::sDetect(spring_detector::springDetect::Request &req, spring_
     cv::Size new_size(3696, 2448);
     cv::resize(rgb,spring_image,new_size);
 
-    convex_hull_points = det.getPosition(params, spring_image, mask, 0) ;
+    convex_hull_points = det.getPosition(params, spring_image, mask, 0, lm_cutoff) ;
     det.getPose(rotY, rotZ);
 
     std::vector<bool> is_cluttered = findEgdes(spring_image, det.spring_roi);
+
+    springs_array.springs.clear();
 
     for (uint i=0; i<convex_hull_points.size(); i++)
     {

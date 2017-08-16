@@ -46,12 +46,14 @@ private:
 
     uint box_offset;
     float threshold;
+    float lm_cutoff;
 
 public:
     CerthDetector()
     : it_(nh_)
-    , box_offset(100)
-    , threshold(0.025)
+    , box_offset(50)
+    , threshold(0.02)
+    , lm_cutoff(40)
     {
         ROS_INFO("Constructor");
 
