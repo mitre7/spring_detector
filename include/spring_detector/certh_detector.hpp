@@ -53,7 +53,7 @@ public:
     : it_(nh_)
     , box_offset(50)
     , threshold(0.02)
-    , lm_cutoff(40)
+    , lm_cutoff(72)
     {
         ROS_INFO("Constructor");
 
