@@ -52,8 +52,8 @@ public:
     CerthDetector()
     : it_(nh_)
     , box_offset(50)
-    , threshold(0.02)
-    , lm_cutoff(72)
+    , threshold(0.015)
+    , lm_cutoff(74)
     {
         ROS_INFO("Constructor");
 
